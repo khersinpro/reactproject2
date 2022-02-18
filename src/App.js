@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Nav from './components/Nav';
+import Home from './components/Home';
+import Country from './components/Country';
+import NotFound from './components/NotFound';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import './Styles/main.scss'
 
 function App() {
+
+  const [blackOrWhite, setBlackOrWhite] = useState(true)
+  const colorChoice = () => {
+    setBlackOrWhite(!blackOrWhite)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App" >
+        <Nav blackOrWhite={colorChoice} colorMode={blackOrWhite} />
+        <Routes>
+          <Route path='/reactproject2/' element={<Home colorMode={blackOrWhite} />}  />
+          <Route path='/reactproject2/country' element={<Country  colorMode={blackOrWhite}/>} />
+          <Route path='/*' element={ <NotFound colorMode={blackOrWhite}  />} />
+        </Routes>
+        
+      </div>   
+    </BrowserRouter>
+
   );
 }
 

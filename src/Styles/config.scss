@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600&family=Bellefair&family=Nunito+Sans:wght@300;400;600;800&display=swap');
+
+$bgDarkMode: hsl(207, 26%, 17%);
+$bgLightMode: hsl(0, 0%, 98%);
+$darkModeElements: hsl(209, 23%, 22%);
+$lightModeElements: hsl(0, 0%, 100%) ;
+$lightModeText: hsl(200, 15%, 8%);
+$DarkModeText : hsl(0, 0%, 100%);
+
+
+%flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%flex-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
