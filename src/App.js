@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Country from './components/Country';
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App" >
+      <Fragment>
         <Nav blackOrWhite={colorChoice} colorMode={blackOrWhite} />
         <Routes>
           <Route path='/reactproject2/' element={<Home colorMode={blackOrWhite} />}  />
@@ -23,7 +23,7 @@ function App() {
           <Route path='/*' element={ <NotFound colorMode={blackOrWhite}  />} />
         </Routes>
         
-      </div>   
+      </Fragment>   
     </BrowserRouter>
 
   );

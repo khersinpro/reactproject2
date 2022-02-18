@@ -74,7 +74,7 @@ export class Home extends Component {
     const colorChoices = colorMode ? 'lightElem' : "darkElem"
 
     return (
-      <div className={`homeContainer ${colorMode ? 'light' : "dark"}`} onClick={this.filterOption} >
+      <main className={`homeContainer ${colorMode ? 'light' : "dark"}`} onClick={this.filterOption} >
         
         <div className='navigation'>
           <div className={` inputContainer ${colorMode ? 'lightElem' : "darkElem"}`}>
@@ -121,23 +121,29 @@ export class Home extends Component {
 
         </div>
 
-        <ul className='cardContainer'>
-            {this.state.allCountriesData.map(countrie => (
-                <Link to={{pathname:'/reactproject2/country'}}  state={[this.state.initialCountriesData, countrie.alpha3Code]}  key={countrie.name} className={`card ${colorMode ? 'lightElem' : "darkElem"}`}>
-                  <li className={` ${colorMode ? 'lightElem' : "darkElem"}`}>                   
-                      <img src={countrie.flag} />                   
-                      <div className='countryInfos'>
-                        <h2>{countrie.name}</h2>
-                        <p><span>Population:</span> {countrie.population}</p>
-                        <p><span>Region:</span> {countrie.region}</p>
-                        <p><span>Capital:</span> {countrie.capital}</p>
-                      </div>                     
-                  </li>
-                </Link>
-            ))}
-        </ul>
+        
+          {this.state.allCountriesData.length === 0 ? 
+            (<div className='loader'><div class="lds-dual-ring"></div></div>) 
+            :                 
+            ( <div className='cardContainer'>
+                  {this.state.allCountriesData.map(countrie => (
+                    <div className={` card  ${colorMode ? 'lightElem' : "darkElem"}`}>                   
+                      <Link to={{pathname:'/reactproject2/country'}}  state={[this.state.initialCountriesData, countrie.alpha3Code]}  key={countrie.name} className={`linknav ${colorMode ? 'lightElem' : "darkElem"}`}>
+                            <img src={countrie.flag} alt={countrie.name} />                   
+                            <div className='countryInfos'>
+                              <h2>{countrie.name}</h2>
+                              <p><span>Population:</span> {countrie.population}</p>
+                              <p><span>Region:</span> {countrie.region}</p>
+                              <p><span>Capital:</span> {countrie.capital}</p>
+                            </div>                     
+                        </Link>
+                      </div>
+                  ))}
+            </div>)
+          }
+        
 
-      </div>
+      </main>
 
     )
   }
