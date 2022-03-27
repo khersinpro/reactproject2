@@ -57,7 +57,7 @@ const Country = ({colorMode}) => {
             <p>Border Countries:</p>
 
             <div className='listContainer'>
-              {borders.map(border => <button onClick={changeLocation} className={`${colorMode ? "lightElem" : "darkElem"}`} key={border} value={border}>{border}</button>)}
+              {borders && borders.map(border => <button onClick={changeLocation} className={`${colorMode ? "lightElem" : "darkElem"}`} key={border} value={border}>{border}</button>)}
             </div>
 
           </div>
